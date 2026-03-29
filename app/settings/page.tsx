@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { 
   ArrowLeft, 
@@ -11,10 +13,10 @@ import {
   LogOut, 
   Trash2 
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
-export function Settings() {
-  const navigate = useNavigate();
+export default function Settings() {
+  const router = useRouter();
 
   return (
     <div className="max-w-3xl mx-auto w-full px-6">

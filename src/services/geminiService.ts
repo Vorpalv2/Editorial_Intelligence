@@ -15,6 +15,10 @@ export async function summarizeUrl(url: string) {
       }
     });
 
+    if (!response.text) {
+      throw new Error("No text returned from Gemini API");
+    }
+
     return JSON.parse(response.text);
   } catch (error) {
     console.error("Summarization error:", error);

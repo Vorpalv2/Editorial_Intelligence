@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Link as LinkIcon, Bolt, MessageSquare, Lightbulb, ExternalLink, Database } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MOCK_SUMMARIES } from '../types';
-import { summarizeUrl } from '../services/geminiService';
+import { MOCK_SUMMARIES } from '@/src/types';
+import { summarizeUrl } from '@/src/services/geminiService';
 
-export function Home() {
+export default function Home() {
   const [url, setUrl] = useState('');
   const [isSummarizing, setIsSummarizing] = useState(false);
   const latestSummary = MOCK_SUMMARIES[0];
@@ -98,7 +100,7 @@ export function Home() {
 
             <div className="mt-8">
               <Link 
-                to={`/article/${latestSummary.id}`}
+                href={`/article/${latestSummary.id}`}
                 className="text-primary font-headline text-xs font-bold flex items-center gap-1.5 hover:text-primary-dim transition-colors uppercase tracking-wider"
               >
                 <ExternalLink size={14} />

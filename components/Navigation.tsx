@@ -1,10 +1,13 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, Home, History, Settings, Share2 } from 'lucide-react';
-import { cn } from '../lib/utils';
+'use client';
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const location = useLocation();
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, Home, History, Settings, Share2 } from 'lucide-react';
+import { cn } from '@/src/lib/utils';
+
+export function Navigation({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -20,7 +23,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </h1>
           </div>
           <div className="flex items-center gap-4">
-            {location.pathname.includes('/article/') && (
+            {pathname.includes('/article/') && (
               <button className="text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95">
                 <Share2 size={20} />
               </button>
@@ -45,36 +48,36 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface border-t border-outline-variant/15">
         <Link 
-          to="/" 
+          href="/" 
           className={cn(
             "flex flex-col items-center justify-center transition-all scale-95 active:scale-90",
-            location.pathname === '/' ? "text-primary font-bold" : "text-outline hover:text-primary"
+            pathname === '/' ? "text-primary font-bold" : "text-outline hover:text-primary"
           )}
         >
-          <Home size={24} fill={location.pathname === '/' ? "currentColor" : "none"} />
+          <Home size={24} fill={pathname === '/' ? "currentColor" : "none"} />
           <span className="font-label text-[11px] font-medium tracking-wider uppercase mt-1">Home</span>
         </Link>
         <Link 
-          to="/history" 
+          href="/history" 
           className={cn(
             "flex flex-col items-center justify-center transition-all scale-95 active:scale-90 relative",
-            location.pathname === '/history' ? "text-primary font-bold" : "text-outline hover:text-primary"
+            pathname === '/history' ? "text-primary font-bold" : "text-outline hover:text-primary"
           )}
         >
           <History size={24} />
           <span className="font-label text-[11px] font-medium tracking-wider uppercase mt-1">History</span>
-          {location.pathname === '/history' && (
+          {pathname === '/history' && (
             <span className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full" />
           )}
         </Link>
         <Link 
-          to="/settings" 
+          href="/settings" 
           className={cn(
             "flex flex-col items-center justify-center transition-all scale-95 active:scale-90",
-            location.pathname === '/settings' ? "text-primary font-bold" : "text-outline hover:text-primary"
+            pathname === '/settings' ? "text-primary font-bold" : "text-outline hover:text-primary"
           )}
         >
-          <Settings size={24} fill={location.pathname === '/settings' ? "currentColor" : "none"} />
+          <Settings size={24} fill={pathname === '/settings' ? "currentColor" : "none"} />
           <span className="font-label text-[11px] font-medium tracking-wider uppercase mt-1">Settings</span>
         </Link>
       </nav>

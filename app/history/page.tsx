@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Search, Clock, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MOCK_SUMMARIES } from '../types';
-import { cn } from '../lib/utils';
+import { MOCK_SUMMARIES } from '@/src/types';
+import { cn } from '@/src/lib/utils';
 
-export function History() {
+export default function History() {
   const [filter, setFilter] = useState<'newest' | 'oldest'>('newest');
   const [search, setSearch] = useState('');
 
@@ -79,7 +81,7 @@ export function History() {
                   {summary.source} • 2 hours ago
                 </span>
               </div>
-              <Link to={`/article/${summary.id}`}>
+              <Link href={`/article/${summary.id}`}>
                 <h3 className="font-headline font-bold text-2xl text-on-surface mb-4 leading-snug group-hover:text-primary transition-colors">
                   {summary.title}
                 </h3>

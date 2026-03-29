@@ -1,12 +1,15 @@
+'use client';
+
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Clock, Sparkles, Microscope, Leaf, BadgeCheck, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
-import { MOCK_SUMMARIES } from '../types';
+import { MOCK_SUMMARIES } from '@/src/types';
 
-export function ArticleDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function ArticleDetail() {
+  const params = useParams();
+  const id = params.id as string;
+  const router = useRouter();
   const summary = MOCK_SUMMARIES.find(s => s.id === id) || MOCK_SUMMARIES[0];
 
   return (
