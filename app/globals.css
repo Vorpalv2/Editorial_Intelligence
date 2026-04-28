@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 @theme {
   --font-headline: var(--font-manrope), sans-serif;
@@ -9,22 +8,22 @@
   --color-primary: #3e646e;
   --color-primary-dim: #325861;
   --color-on-primary: #ebfaff;
-  
+
   --color-surface: #f8f9fa;
   --color-on-surface: #2b3437;
-  
+
   --color-surface-container-lowest: #ffffff;
   --color-surface-container-low: #f1f4f6;
   --color-surface-container-high: #e3e9ec;
   --color-surface-container-highest: #dbe4e7;
-  
+
   --color-on-surface-variant: #586064;
   --color-outline: #737c7f;
   --color-outline-variant: #abb3b7;
-  
+
   --color-secondary-container: #c9e7f7;
   --color-on-secondary-container: #395663;
-  
+
   --color-error: #9f403d;
   --color-error-container: #fe8983;
 
@@ -52,5 +51,10 @@
 
 .thin-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(115, 124, 127, 0.15), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(115, 124, 127, 0.15),
+    transparent
+  );
 }

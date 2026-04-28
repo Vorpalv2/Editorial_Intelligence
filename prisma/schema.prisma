@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum SummaryDepthModeEnum {
+  Concise 
+  Balanced 
+  Comprehensive
+}
+
+model SummarizedData {
+  id              Int      @id @default(autoincrement())
+  title           String  
+  summarizedText  String
+  source          String
+  summaryDepthMode SummaryDepthModeEnum @default(Balanced)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  commentAnalysis String[]
+  topComments     String[]
+  takeAways       String[]
+  unread         Boolean @default(true)
+
+  userId  String
+  user User @relation(fields:[userId],references: [clerkId])
+}
+
+model User {
+  id        String   @id @default(cuid()) // Your internal DB ID
+  clerkId   String   @unique              // The ID from Clerk
+  email     String   @unique
+  username  String?
+  imageUrl  String?
+  joinDate DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  posts SummarizedData[]
+}

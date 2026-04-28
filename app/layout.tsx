@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/Navigation";
+// import { Navigation } from "@/components/Navigation";
+// import { ToastContainer } from "react-toastify";
+// import { ClerkProvider } from "@clerk/nextjs";
+// import { SummaryWatcher } from "@/components/SummaryWatcher";
+import Providers from "@/context/SummaryProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
-        <Navigation>{children}</Navigation>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
