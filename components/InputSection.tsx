@@ -1,7 +1,6 @@
 // components/InputSection.tsx
 "use client"; // This keeps your state and buttons working
 import React, { useEffect, useState, useTransition } from "react";
-import SummarizeRedditAction from "@/actions/summarizeReddit.action";
 import { Bolt, LinkIcon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useSummaryContext } from "@/context/url.context";

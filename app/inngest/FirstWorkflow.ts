@@ -9,7 +9,7 @@ export const processSummary = inngest.createFunction(
   async ({ event, step }) => {
     // Step 1: Scrape the data
     const { url, sortType, summaryMode, userId } = event.data;
-    console.log(summaryMode, "summary mode in inngest");
+
     const content = await step.run("scrape-url", async () => {
       return await scrapeRedditPost(url, sortType);
     });

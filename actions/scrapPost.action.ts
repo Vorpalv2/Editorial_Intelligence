@@ -41,9 +41,9 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
     timeout: 10000,
   });
 
-  if (!titleSelector || !bodySelector) {
-    return;
-  }
+  // if (!titleSelector || !bodySelector) {
+  //   return;
+  // }
 
   const title = await page.$eval('h1[slot="title"]', (el) => el.innerText);
   const description = await page.$eval(
