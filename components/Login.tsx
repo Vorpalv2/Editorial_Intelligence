@@ -17,10 +17,6 @@ type LoginType = {
 export default function Login() {
   const [isOnLogin, setIsOnLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [email, setEmail] = useState("");
 
   return (
     <div className="min-h-screen flex flex-col">
