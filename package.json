@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev -p 3000 -H 0.0.0.0",
-    "build": "next build",
-    "start": "next start -p 3000 -H 0.0.0.0",
-    "lint": "tsc --noEmit"
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.53",
