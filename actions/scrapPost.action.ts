@@ -1,7 +1,7 @@
 // lib/scraper.ts
 
 import puppeteer from "puppeteer-core";
-import chromium from "@sparticuz/chromium";
+import chromium from "@sparticuz/chromium-min";
 
 export async function scrapeRedditPost(url: string, sortType: string = "Top") {
   const isProd = process.env.NODE_ENV === "production";
