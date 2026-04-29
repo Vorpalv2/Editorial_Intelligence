@@ -47,6 +47,13 @@ export default function SingleEntryInInfiniteList({
     { refreshInterval: 3000 },
   );
 
+  const [entryDate, setEntryDate] = useState<string>("");
+
+  useEffect(() => {
+    // This only runs on the client, so the server never sees the formatted string
+    setEntryDate(summary.createdAt.toLocaleDateString());
+  }, [summary.createdAt]);
+
   useEffect(() => {
     if (data?.isDone) {
       setIsRefreshing(false);
@@ -71,8 +78,7 @@ export default function SingleEntryInInfiniteList({
         <div className="flex items-center gap-3 mb-4">
           <div className="flex w-full justify-between">
             <span className="text-primary font-label text-[10px] font-bold uppercase tracking-widest">
-              {RefactorURL(summary.source)} •{"   "}
-              {summary.createdAt.toLocaleDateString()}
+              {RefactorURL(summary.source)} • {entryDate}
             </span>
 
             <div className="flex gap-4 items-center">

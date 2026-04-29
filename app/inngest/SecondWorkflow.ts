@@ -4,7 +4,6 @@ import { inngest } from "./client";
 import InngestSaveToDB from "@/actions/inngestSaveToDBaction";
 import InngestDeleteFromDB from "@/actions/InngestDeleteFromDBaction";
 import { InngestUpdateSummaryInDB } from "@/actions/InngestUpdateInDBaction";
-import { RefreshSummaryAction } from "@/actions/refreshSummary.action";
 import InngestRefreshLLMAction from "@/actions/InngestRefreshLLMAction";
 
 export const RefreshSummary = inngest.createFunction(
