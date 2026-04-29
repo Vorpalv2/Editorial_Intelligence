@@ -18,9 +18,7 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
         ? (chromium as any).defaultViewport
         : { width: 1280, height: 720 },
       executablePath: isProd
-        ? await chromium.executablePath(
-            `https://github.com/Sparticuz/chromium/releases/download/v148.0.0/chromium-v148.0.0-pack.tar`,
-          )
+        ? await chromium.executablePath()
         : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
       headless: isProd ? (chromium as any).headless : "shell",
     });
