@@ -23,9 +23,6 @@ importers:
       '@prisma/client':
         specifier: ^7.6.0
         version: 7.6.0(prisma@7.6.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.8.3))(typescript@5.8.3)
-      '@sparticuz/chromium-min':
-        specifier: 123.0.1
-        version: 123.0.1
       '@tailwindcss/postcss':
         specifier: ^4.2.2
         version: 4.2.2
@@ -1075,10 +1072,6 @@ packages:
       '@types/react':
         optional: true
 
-  '@sparticuz/chromium-min@123.0.1':
-    resolution: {integrity: sha512-xB0lGecfZQf1rQZi+x0vA97zrrDBH5opgrZIxzI+ITrwXKeJtBOrXMv5L2dEpHDq9bMBXXhdGap0P7iCDSUvPg==}
-    engines: {node: '>= 16'}
-
   '@stablelib/base64@1.0.1':
     resolution: {integrity: sha512-1bnPQqSxSuc3Ii6MhBysoWCg58j97aUjuCSZrGSmDxNqtytIi0k8utUenAwTZN4V5mXXYGsVUI9zeBqy+jBOSQ==}
 
@@ -1624,15 +1617,6 @@ packages:
   fetch-blob@3.2.0:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
-
-  follow-redirects@1.16.0:
-    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   foreground-child@3.3.1:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
@@ -3706,16 +3690,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@sparticuz/chromium-min@123.0.1':
-    dependencies:
-      follow-redirects: 1.16.0
-      tar-fs: 3.0.5
-    transitivePeerDependencies:
-      - bare-abort-controller
-      - bare-buffer
-      - debug
-      - react-native-b4a
-
   '@stablelib/base64@1.0.1': {}
 
   '@standard-schema/spec@1.1.0': {}
@@ -4219,8 +4193,6 @@ snapshots:
     dependencies:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
-
-  follow-redirects@1.16.0: {}
 
   foreground-child@3.3.1:
     dependencies:

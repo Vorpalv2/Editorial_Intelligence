@@ -1,7 +1,7 @@
 // lib/scraper.ts
 
 import puppeteer from "puppeteer-core";
-import chromium from "@sparticuz/chromium-min";
+// import chromium from "@sparticuz/chromium-min";
 
 export async function scrapeRedditPost(url: string, sortType: string = "Top") {
   const isProd = process.env.NODE_ENV === "production";
@@ -10,25 +10,21 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
 
   try {
     // 1. Resolve the path separately
-    const remoteBin =
-      "https://github.com/Sparticuz/chromium/releases/download/v123.0.1/chromium-v123.0.1-pack.tar";
-
-    const execPath = isProd
-      ? await chromium.executablePath(remoteBin)
-      : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-
-    // 1. Launch with explicit configuration
-    browser = await puppeteer.launch({
-      args: isProd
-        ? chromium.args
-        : ["--no-sandbox", "--disable-setuid-sandbox"],
-      defaultViewport: isProd
-        ? (chromium as any).defaultViewport
-        : { width: 1280, height: 720 },
-      // Force it to download the pack if it's missing in prod
-      executablePath: execPath,
-      headless: isProd ? (chromium as any).headless : "shell",
-    });
+    if (isProd) {
+      // Connect to Browserless in Production
+      // No local binaries, no libnss3 errors
+      browser = await puppeteer.connect({
+        browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_TOKEN}`,
+      });
+    } else {
+      // Local development: Use your Mac's installed Chrome
+      browser = await puppeteer.launch({
+        executablePath:
+          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        headless: "shell",
+        args: ["--no-sandbox"],
+      });
+    }
 
     const page = await browser.newPage();
     await page.setUserAgent(
