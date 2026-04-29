@@ -9,6 +9,14 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
   let browser;
 
   try {
+    // 1. Resolve the path separately
+    const remoteBin =
+      "https://github.com/Sparticuz/chromium/releases/download/v123.0.1/chromium-v123.0.1-pack.tar";
+
+    const execPath = isProd
+      ? await chromium.executablePath(remoteBin)
+      : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+
     // 1. Launch with explicit configuration
     browser = await puppeteer.launch({
       args: isProd
@@ -18,9 +26,7 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
         ? (chromium as any).defaultViewport
         : { width: 1280, height: 720 },
       // Force it to download the pack if it's missing in prod
-      executablePath: isProd
-        ? `https://github.com/Sparticuz/chromium/releases/download/v123.0.1/chromium-v123.0.1-pack.tar`
-        : undefined,
+      executablePath: execPath,
       headless: isProd ? (chromium as any).headless : "shell",
     });
 
