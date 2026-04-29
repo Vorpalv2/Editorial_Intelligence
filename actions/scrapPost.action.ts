@@ -1,22 +1,53 @@
 // lib/scraper.ts
-import puppeteer from "puppeteer";
+
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 export async function scrapeRedditPost(url: string, sortType: string = "Top") {
   const sortingMethod = `?sort=${sortType}`;
+
+  const isProd = process.env.NODE_ENV === "production";
+  let browser;
   // console.log(url + sortingMethod);
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-accelerated-2d-canvas",
-      "--no-first-run",
-      "--no-zygote",
-      "--disable-gpu", // Vital for reducing CPU load
-    ],
+  // const viewport = {
+  //   deviceScaleFactor: 1,
+  //   hasTouch: false,
+  //   height: 1080,
+  //   isLandscape: true,
+  //   isMobile: false,
+  //   width: 1920,
+  // };
+
+  // const browser = await puppeteer.launch({
+  //   args: puppeteer.defaultArgs({ args: chromium.args, headless: "shell" }),
+  //   defaultViewport: viewport,
+  //   executablePath: await chromium.executablePath(),
+  // });
+
+  // 1. Manually define the viewport to avoid the .defaultViewport error
+  const myViewport = {
+    width: 1280,
+    height: 720,
+    deviceScaleFactor: 1,
+  };
+
+  browser = await puppeteer.launch({
+    // 2. Use a fallback for args
+    args: isProd ? chromium.args : ["--no-sandbox", "--disable-setuid-sandbox"],
+
+    // Use your manual viewport instead of chromium.defaultViewport
+    defaultViewport: isProd ? (chromium as any).defaultViewport : myViewport,
+
+    // 3. Cast to 'any' if .executablePath or .headless are being stubborn
+    executablePath: isProd
+      ? await chromium.executablePath()
+      : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+
+    // 4. Fallback for headless: 'shell' is often better for performance
+    headless: isProd ? (chromium as any).headless : "shell",
   });
+
   const page = await browser.newPage();
   await page.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -63,6 +94,7 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
         .map((el) => (el as HTMLElement).innerText.trim());
     },
   );
+  await browser.close(); // Critical!
 
   // console.log(comment.map((each) => each.split("/n")));
   // console.log(mainComments);
@@ -72,6 +104,4 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
     url,
     comment: mainComments,
   };
-
-  await browser.close(); // Critical!
 }
