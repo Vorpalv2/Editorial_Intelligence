@@ -4,7 +4,9 @@ import { inngest } from "./client";
 import InngestSaveToDB from "@/actions/inngestSaveToDBaction";
 import InngestDeleteFromDB from "@/actions/InngestDeleteFromDBaction";
 import { InngestUpdateSummaryInDB } from "@/actions/InngestUpdateInDBaction";
-import InngestRefreshLLMAction from "@/actions/InngestRefreshLLMAction";
+import InngestRefreshLLMAction, {
+  ReceivedInputType,
+} from "@/actions/InngestRefreshLLMAction";
 
 export const RefreshSummary = inngest.createFunction(
   { id: "refresh-summary", triggers: { event: "reddit/refresh.requested" } },
@@ -24,7 +26,11 @@ export const RefreshSummary = inngest.createFunction(
       return { status: "failed", reason: "Scraper error" };
     }
     const summary = await step.run("get-llm-summary", async () => {
-      return await InngestRefreshLLMAction(content, summaryMode, userId);
+      return await InngestRefreshLLMAction(
+        content as ReceivedInputType,
+        summaryMode,
+        userId,
+      );
     });
 
     if (summary) {

@@ -22,7 +22,7 @@ type ReturnOutputType = {
   summaryDepthMode: string;
 };
 
-type ReceivedInputType = {
+export type ReceivedInputType = {
   title: string;
   description: string;
   url: string;
