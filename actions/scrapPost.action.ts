@@ -17,9 +17,10 @@ export async function scrapeRedditPost(url: string, sortType: string = "Top") {
       defaultViewport: isProd
         ? (chromium as any).defaultViewport
         : { width: 1280, height: 720 },
+      // Force it to download the pack if it's missing in prod
       executablePath: isProd
-        ? await chromium.executablePath()
-        : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        ? `https://github.com/Sparticuz/chromium/releases/download/v123.0.1/chromium-v123.0.1-pack.tar`
+        : undefined,
       headless: isProd ? (chromium as any).headless : "shell",
     });
 
