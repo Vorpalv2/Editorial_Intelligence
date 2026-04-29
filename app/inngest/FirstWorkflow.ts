@@ -3,6 +3,7 @@ import { scrapeRedditPost } from "@/actions/scrapPost.action";
 import { inngest } from "./client";
 import InngestSaveToDB from "@/actions/inngestSaveToDBaction";
 import InngestBackupLLMAction from "@/actions/InngestBackupLLMAction";
+import { ReceivedInputType } from "@/actions/InngestRefreshLLMAction";
 
 export const processSummary = inngest.createFunction(
   { id: "process-summary", triggers: { event: "reddit/summarize.requested" } },
@@ -17,12 +18,20 @@ export const processSummary = inngest.createFunction(
     try {
       // Step 2: Hit the LLM (This can take 30s+)
       summary = await step.run("get-llm-summary", async () => {
-        return await InngestLLMAction(content, summaryMode, userId);
+        return await InngestLLMAction(
+          content as ReceivedInputType,
+          summaryMode,
+          userId,
+        );
       });
     } catch (err) {
       // Step 2: Hit the LLM (This can take 30s+)
       summary = await step.run("get-backp-llm-summary", async () => {
-        return await InngestBackupLLMAction(content, summaryMode, userId);
+        return await InngestBackupLLMAction(
+          content as ReceivedInputType,
+          summaryMode,
+          userId,
+        );
       });
     }
 
