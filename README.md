@@ -25,8 +25,12 @@ Since the whole point of the app is to summarize the articles, i went with somet
 
 **Pages**
 
-Landing Page
-SignIn/Signup
-All Blog Pages
-Single Blog Page
-Settings Page
+* Landing Page
+* SignIn/Signup
+* All Blog Pages
+* Single Blog Page
+* Settings Page
+
+**Duration**
+
+* 2 Weeks is what it took me (On/Off) to complete this app however the initial plan was to complete this in 1 week but whatever, it is what it is.
