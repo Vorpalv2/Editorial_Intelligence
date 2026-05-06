@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+_**Editorial Intelligence**_
 
-# Run and deploy your AI Studio app
+Full Stack App designed to summarize, save and showcase the summary in a neatly arranged UI.
 
-This contains everything you need to run your app locally.
+**Frontend**
 
-View your app in AI Studio: https://ai.studio/apps/2d8b5998-b1ac-43a4-a608-4468d56caf67
-
-## Run Locally
-
-**Prerequisites:**  Node.js
+Target was to make something that would stand out, since the app in itself isnt that complicated, the standout feature had to be an eye catching UI.
+Stack- NextJS for its simplicity and my familiarability with the Framework in general, Animation was handled by Motion by FramerMotion and ofc Typescript and Tailwind.
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Backend**
+
+Auth was a big thing in here since i wanted to use a third party hosted auth like clerk but didnt wanna stick with their default login/signup style of pages so everything related to it was custome designed and imtegrated with the hooks that clerk provides for custom flows.
+
+Server was handled by NextJS inbuild server routes and server actions.
+
+Prisma and NeonDB as a ORM and Database.
+
+Workflow simplification was a major requirement in this since scrapped takes a toll on vercel's hosting so i had to figure out a clever way to offload the heavy usage from vercel, logical option was to use inngest as a workflow management server alongside with another service that'd handle the scrapping of the data using puppeteer on their servers since doing that on vercel wouldve resulted in a timeout.
+
+**AI Agent**
+
+Since the whole point of the app is to summarize the articles, i went with something that'd allow me to showcase this feature as much as possible without drilling a hole in my wallet so gemini and ollama's local LLM have been tested in this app and since its using AI-SDK, plug and play is their general MO.
+
+
+**Pages**
+
+Landing Page
+SignIn/Signup
+All Blog Pages
+Single Blog Page
+Settings Page
