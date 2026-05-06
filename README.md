@@ -1,4 +1,4 @@
-_**Editorial Intelligence**_
+> _**Editorial Intelligence**_
 
 Full Stack App designed to summarize, save and showcase the summary in a neatly arranged UI.
 
@@ -16,7 +16,7 @@ Server was handled by NextJS inbuild server routes and server actions.
 
 Prisma and NeonDB as a ORM and Database.
 
-Workflow simplification was a major requirement in this since scrapped takes a toll on vercel's hosting so i had to figure out a clever way to offload the heavy usage from vercel, logical option was to use inngest as a workflow management server alongside with another service that'd handle the scrapping of the data using puppeteer on their servers since doing that on vercel wouldve resulted in a timeout.
+Workflow simplification was a major requirement in this since web scrapper takes a toll on vercel's hosting so i had to figure out a clever way to offload the heavy usage from vercel, logical option was to use inngest as a workflow management server alongside with another service that'd handle the scrapping of the data using puppeteer on their servers since doing that on vercel wouldve resulted in a timeout.
 
 **AI Agent**
 
