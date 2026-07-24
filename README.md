@@ -13,16 +13,42 @@ The app is designed to feel premium with a polished UI and an intelligent workfl
 - Saves summaries to a NeonDB/PostgreSQL database for history and reuse.
 - Uses Inngest to handle scraping and LLM summarization asynchronously, which avoids blocking the web app and protects serverless resources.
 
-## Technology Stack
 
-- Frontend: Next.js 16 (App Router), React 19, Tailwind CSS, motion/react
-- Backend: Next.js server routes, server actions, Prisma ORM
-- Database: PostgreSQL via Prisma, likely hosted on NeonDB
-- Auth: Clerk with custom login/signup UI
-- AI: Google Gemini via `@ai-sdk/google`, `ai` SDK, prompt tooling, and fallback strategies
-- Workflow: Inngest event-driven background processing
-- Scraping: `puppeteer-core` with Browserless in production and local Chrome in development
-- Utilities: `swr`, `react-intersection-observer`, `react-toastify`, `zod`
+## Tech Stack
+
+![Static Badge](https://img.shields.io/badge/Next.js-v16-000000?logo=nextdotjs&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/React-v19-61DAFB?logo=react&logoColor=black&color=61DAFB)
+![Static Badge](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&color=3178C6)
+![Static Badge](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white&color=06B6D4)
+![Static Badge](https://img.shields.io/badge/Motion-0055FF?logo=framer&logoColor=white&color=0055FF)
+![Static Badge](https://img.shields.io/badge/shadcn%2Fui-000000?logo=shadcnui&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/Aceternity_UI-000000?logo=vercel&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/SWR-000000?logo=vercel&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/React_Toastify-3498DB?logo=react&logoColor=white&color=3498DB)
+![Static Badge](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white&color=339933)
+![Static Badge](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/Server_Actions-000000?logo=nextdotjs&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/Inngest-000000?logo=inngest&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/Puppeteer_Core-40B5A4?logo=puppeteer&logoColor=white&color=40B5A4)
+![Static Badge](https://img.shields.io/badge/Browserless-1E293B?logo=googlechrome&logoColor=white&color=1E293B)
+![Static Badge](https://img.shields.io/badge/Google_Gemini-8E75B2?logo=googlegemini&logoColor=white&color=8E75B2)
+![Static Badge](https://img.shields.io/badge/Vercel_AI_SDK-000000?logo=vercel&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/OpenAI_SDK-412991?logo=openai&logoColor=white&color=412991)
+![Static Badge](https://img.shields.io/badge/Ollama-000000?logo=ollama&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/LangChain-1C3C3C?logo=langchain&logoColor=white&color=1C3C3C)
+![Static Badge](https://img.shields.io/badge/Pinecone-000000?logo=pinecone&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white&color=4169E1)
+![Static Badge](https://img.shields.io/badge/Prisma_ORM-2D3748?logo=prisma&logoColor=white&color=2D3748)
+![Static Badge](https://img.shields.io/badge/NeonDB-00E599?logo=neon&logoColor=black&color=00E599)
+![Static Badge](https://img.shields.io/badge/Clerk_Auth-6C47FF?logo=clerk&logoColor=white&color=6C47FF)
+![Static Badge](https://img.shields.io/badge/Sanity_CMS-F03E2F?logo=sanity&logoColor=white&color=F03E2F)
+![Static Badge](https://img.shields.io/badge/Resend-000000?logo=resend&logoColor=white&color=000000)
+![Static Badge](https://img.shields.io/badge/Zod-3E67B1?logo=zod&logoColor=white&color=3E67B1)
+![Static Badge](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white&color=3FCF8E)
+![Static Badge](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&color=2496ED)
+![Static Badge](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white&color=000000)
+
+---
 
 ## Architecture
 
